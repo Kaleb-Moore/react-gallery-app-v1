@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NotFound from '../components/NotFound';
+import Photo from './Photo';
 
 class PhotoContainer extends Component {
   render() {
@@ -10,7 +11,7 @@ class PhotoContainer extends Component {
         <Photo farm={image.photo.farm} server={image.photo.server} id={image.photo.id} secret={image.photo.secret} title={image.photo.title} key={image.photo.id}/>
       );
     } else {
-      gifs = <NotFound />
+      photos = <NotFound />
     }
 
     return (
