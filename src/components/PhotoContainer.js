@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import NotFound from '../components/NotFound';
 import Photo from './Photo';
 
 class PhotoContainer extends Component {
   render() {
+    console.log(this.props.data, "inside photocontainer")
     let results = this.props.data;
     let photos;
     if (results.length > 0) {
       photos = results.map(image =>
-        <Photo farm={image.photo.farm} server={image.photo.server} id={image.photo.id} secret={image.photo.secret} title={image.photo.title} key={image.photo.id}/>
+        <Photo 
+          farm={image.farm} 
+          server={image.server} 
+          id={image.id} 
+          secret={image.secret} 
+          title={image.title} 
+          key={image.id}
+        />
       );
-    } else {
-      photos = <NotFound />
-    }
+    } 
 
     return (
       <div className="photo-container">
