@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
 import NotFound from './components/NotFound';
 import apiKey from './components/config';
-
-
 
 class App extends Component {
 
@@ -16,9 +14,6 @@ class App extends Component {
     this.state = {
       photos: [],
       loading: true,
-      cats: [],
-      dogs: [],
-      computers: []
     }
   }
 
@@ -42,19 +37,18 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.cats)
     return (
       <BrowserRouter>
         <div className='container'>
           <SearchForm onSearch={ this.performSearch }/>
           <Nav />
           <Switch>
-          <Route exact path='/' component={ () => (this.state.loading) ? <p>Loading... </p>: <PhotoContainer data={ this.state.photos } /> } />
-           <Route path="/cats" render={ () => <PhotoContainer data={ this.state.photos }/> } />
-           <Route path="/dogs" render={ () => <PhotoContainer data={ this.state.photos }/> } />
-           <Route path="/computers" render={ () => <PhotoContainer data={ this.state.photos }/> } />
-           
-           <Route component={NotFound} />
+            <Route exact path='/' render={ () => <Redirect to='/cats'/>} />
+            <Route path="/cats" render={ () => (this.state.loading) ? <p>Loading... </p>: <PhotoContainer data={ this.state.photos } />} />
+            <Route path='/dogs' component={NotFound} />
+            <Route path='/computers' component={NotFound} />
+            <Route path='/:searchText' component={NotFound} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </BrowserRouter>
