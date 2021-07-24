@@ -5,7 +5,7 @@ React Gallery
 ### Important:
 
 To run locally, you will need your own <a href="https://www.flickr.com/services/api/misc.api_keys.html" target="_blank">Flickr API Key</a>
-<br>Create a config.js file in the <code>src</code> directory and add the following JavaScript:
+<br>Create a config.js file in the <code>src/components</code> directory and add the following JavaScript:
 
 <pre>
 const apiKey = 'YOUR_API_KEY';
