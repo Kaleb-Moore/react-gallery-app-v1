@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Photo(props) {
+const Photo = ({ server, id, secret, title}) => {
+  let url = `https://live.staticflickr.com/${server}/${id}_${secret}.jpg`;
   return (
     <li>
-        <img src={`https://live.staticflickr.com/${props.server}/${props.id}_${props.secret}.jpg`} alt={props.title} />
+        <img src={url} alt={title} />
     </li>
   );
 }
