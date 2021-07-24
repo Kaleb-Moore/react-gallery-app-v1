@@ -61,7 +61,6 @@ class App extends Component {
   }
 
   render () {
-    console.log(this.performSearch)
     return (
       <BrowserRouter>
         <div className="container">
@@ -76,7 +75,7 @@ class App extends Component {
               <Route path='/cats' render={ () => <PhotoContainer data={this.state.cats} alt="cat" /> } />
               <Route path='/dogs' render={ () => <PhotoContainer data={this.state.dogs} alt="dog"/> } /> 
               <Route path='/computers' render={ () => <PhotoContainer data={this.state.computers} alt="computer" /> } />
-              <Route path='/search/:query' render={ ( { match } ) => <PhotoContainer data={this.state.photos} alt={this.state.title} reload={this.performSearch} query={match.params.query} /> } />
+              <Route exact path='/search/:query' render={ ( { match } ) => <PhotoContainer data={this.state.photos} reload={this.performSearch} searchText={this.state.title} query={match.params.query} /> } />
               <Route render={ () => <ul><PageNotFound /></ul> } />
             </Switch>
           }
