@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Photo from './Photo';
+import NotFound from './NotFound';
 
 class PhotoContainer extends Component {
 
@@ -22,11 +23,18 @@ class PhotoContainer extends Component {
           title={this.props.alt}
         />
       );
+    } else {
+      photos = <NotFound />
     }
 
     return (
       <div className="photo-container">
-          <h2>{this.props.alt || this.props.searchText} Pictures</h2>
+          {
+            (results.length > 0) 
+              ? <h2>{this.props.alt || this.props.searchText} Pictures</h2>
+              : null
+            }
+         
           <ul>
             {photos}
           </ul>      
