@@ -21,6 +21,7 @@ import {withRouter} from 'react-router-dom';
   }
   
     render () {
+      console.log(this.props.onSearch)
       return (
         <form className="search-form" onSubmit={this.handleSubmit}>
             <input type="search" name="search" placeholder="Search" ref={ (input) => this.query = input } onChange={this.onSearchChange} required/>
